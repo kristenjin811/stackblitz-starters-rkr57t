@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   numbers = [1, 2, 3, 4]
   draggedIndex: number | null = null
-
+  draggedNumber: number | null = null
+  
   onDragStart(event: DragEvent, index: number) {
     this.draggedIndex = index 
   }
@@ -19,9 +20,9 @@ export class AppComponent {
   
   onDrop(event: DragEvent, targetIndex: number) {
     if (this.draggedIndex !== null) {
-      const draggedNumber = this.numbers[this.draggedIndex];
+      this.draggedNumber = this.numbers[this.draggedIndex];
       this.numbers.splice(this.draggedIndex, 1);
-      this.numbers.splice(targetIndex, 0, draggedNumber);
+      this.numbers.splice(targetIndex, 0, this.draggedNumber);
       this.draggedIndex = null;
     }
   }
