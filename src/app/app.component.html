@@ -1,0 +1,12 @@
+
+
+<ul class="numbers-list">
+  <li *ngFor="let num of numbers let i = index"
+    [draggable]="true"
+    (dragstart)="onDragStart($event, i)"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event, i)"
+    class="number"
+  >
+    {{num}}</li>
+</ul>
